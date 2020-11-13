@@ -21,25 +21,10 @@ class CobroRender extends StatelessWidget {
     const letraTitulo = Colors.black87;
     return Hero(
       tag: cliente.id,
-      child: Slidable(
-        actionPane: SlidableDrawerActionPane(),
-        actionExtentRatio: 0.25,
-        child: Card(
-          child: CardClienteRender(),
+      child: Card(
+        child: CardClienteRender(
+          cliente: cliente,
         ),
-        secondaryActions: <Widget>[
-          IconSlideAction(
-            caption: 'Cobros',
-            color: verde,
-            // color: Color(0xFFD2691E),
-            icon: Icons.monetization_on,
-            foregroundColor: Colors.white,
-            onTap: () {
-              var idCliente = cliente.id;
-              Get.toNamed('/home/cobros/efetuarCobro', arguments: idCliente);
-            },
-          ),
-        ],
       ),
     );
   }

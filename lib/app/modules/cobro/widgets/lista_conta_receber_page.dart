@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_cobros/app/modules/cobro/models/cliente.dart';
 import 'package:proyecto_cobros/app/modules/cobro/widgets/card_cliente_render.dart';
@@ -23,6 +24,11 @@ class ListaContaReceberPage extends StatefulWidget {
 class _ListaContaReceberPageState extends State<ListaContaReceberPage> {
   @override
   Widget build(BuildContext context) {
+    const verde = Color.fromRGBO(92, 184, 92, 1);
+    const rojo = Color.fromRGBO(254, 0, 0, 1);
+    const naranja = Color.fromRGBO(253, 81, 28, 1);
+    const verdeMusgo = Color.fromRGBO(0, 96, 100, 1);
+    const letraTitulo = Colors.black87;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -33,18 +39,36 @@ class _ListaContaReceberPageState extends State<ListaContaReceberPage> {
           Container(
             padding: EdgeInsets.all(8),
             child: Container(
-                child: CardClienteRender(
-              cliente: widget.cliente,
-            )),
+              child: CardClienteRender(
+                cliente: widget.cliente,
+                slidable: false,
+              ),
+            ),
           ),
           Container(
-            width: Get.width,
+            width: Get.width * 0.92,
             color: Colors.white,
-            child: ContaRender(),
+            child: FlatButton(
+                onPressed: () {
+                  Get.toNamed('/home/cobros/efetuarCobro');
+                },
+                child: ContaRender()),
             // child: Observer(builder: (_, int index){
             //   return ContaRender()
             // })
-          )
+          ),
+          Container(
+            width: Get.width * 0.92,
+            color: Colors.white,
+            child: FlatButton(
+                onPressed: () {
+                  Get.toNamed('/home/cobros/efetuarCobro');
+                },
+                child: ContaRender()),
+            // child: Observer(builder: (_, int index){
+            //   return ContaRender()
+            // })
+          ),
         ],
       ),
     );

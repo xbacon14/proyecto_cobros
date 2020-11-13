@@ -7,9 +7,11 @@ import 'package:proyecto_cobros/app/modules/cobro/widgets/lista_conta_receber_pa
 
 class CardClienteRender extends StatelessWidget {
   final Cliente cliente;
+  final bool slidable;
   // final ClienteController controller;
 
-  const CardClienteRender({Key key, @required this.cliente}) : super(key: key);
+  const CardClienteRender({Key key, @required this.cliente, this.slidable})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     const verde = Color.fromRGBO(92, 184, 92, 1);
@@ -18,6 +20,7 @@ class CardClienteRender extends StatelessWidget {
     const verdeMusgo = Color.fromRGBO(0, 96, 100, 1);
     const letraTitulo = Colors.black87;
     return Slidable(
+      enabled: slidable,
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.25,
       child: Container(

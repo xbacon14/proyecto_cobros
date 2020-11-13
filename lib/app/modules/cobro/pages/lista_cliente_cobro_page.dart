@@ -67,7 +67,7 @@ class _ListaClienteCobroPageState
               itemBuilder: (_, int index) {
                 // return Text(controller.dataProvider[index].nome);
                 return CardClienteRender(
-                    cliente: controller.dataProvider[index]);
+                    slidable: true, cliente: controller.dataProvider[index]);
               },
             );
           }),

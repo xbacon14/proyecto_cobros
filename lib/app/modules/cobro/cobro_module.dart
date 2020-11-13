@@ -3,6 +3,7 @@ import 'package:proyecto_cobros/app/modules/cobro/pages/lista_cliente_cobro_page
 
 import 'pages/cobro_controller.dart';
 import 'repositories/cobro_repository.dart';
+import 'widgets/cobro_render.dart';
 import 'widgets/lista_conta_receber_page.dart';
 
 class CobroModule extends ChildModule {
@@ -18,7 +19,7 @@ class CobroModule extends ChildModule {
             child: (_, args) => ListaClienteCobroPage()),
         Router('/listaContaReceber',
             child: (_, args) => ListaContaReceberPage()),
-        // Router('/efetuarCobro', child: (_, args) => CobroRender()),
+        Router('/efetuarCobro', child: (_, args) => CobroRender()),
       ];
 
   static Inject get to => Inject<CobroModule>.of();
