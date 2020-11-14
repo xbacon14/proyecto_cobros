@@ -47,23 +47,20 @@ class Alert {
         message,
       ),
     );
+
+    //     backgroundGradient: LinearGradient(
+    //   colors: [Colors.green.shade800, Colors.greenAccent.shade700],
+    //   stops: [0.6, 1],
+    // )
   }
   Alert.smallShow(String message, int type) {
     Color colorBack;
-    Color color1;
-    Color color2;
     if (type == 0) {
       colorBack = Colors.yellow;
-      color1 = Color(0xFFFFDD00);
-      color2 = Color(0xFFFBB034);
     } else if (type == 1) {
       colorBack = Colors.green;
-      color1 = Color(0xFF00B712);
-      color2 = Color(0xFF5AFF15);
     } else if (type == 2) {
       colorBack = Colors.red;
-      color1 = Color(0xFFFE5858);
-      color2 = Color(0xFFEE9617);
     }
     Get.rawSnackbar(
       messageText: Text(
@@ -71,23 +68,15 @@ class Alert {
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 13.0, color: Colors.white),
       ),
-      duration: Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: 1500),
       maxWidth: 150,
-      borderRadius: 5.0,
+      borderRadius: 50.0,
       backgroundColor: colorBack,
-      backgroundGradient: LinearGradient(
-        colors: [color1, color2],
-      ),
       snackPosition: SnackPosition.TOP,
       margin: EdgeInsets.only(top: 10),
       padding: EdgeInsets.symmetric(
         vertical: 20,
       ),
     );
-
-    //     backgroundGradient: LinearGradient(
-    //   colors: [Colors.green.shade800, Colors.greenAccent.shade700],
-    //   stops: [0.6, 1],
-    // )
   }
 }

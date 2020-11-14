@@ -24,19 +24,16 @@ mixin _$LoginController on _LoginControllerBase, Store {
     });
   }
 
-  final _$_LoginControllerBaseActionController =
-      ActionController(name: '_LoginControllerBase');
+  final _$autenticarAsyncAction =
+      AsyncAction('_LoginControllerBase.autenticar');
 
   @override
   Future<Usuario> autenticar(String login, String senha) {
-    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
-        name: '_LoginControllerBase.autenticar');
-    try {
-      return super.autenticar(login, senha);
-    } finally {
-      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
-    }
+    return _$autenticarAsyncAction.run(() => super.autenticar(login, senha));
   }
+
+  final _$_LoginControllerBaseActionController =
+      ActionController(name: '_LoginControllerBase');
 
   @override
   Future<dynamic> salvarFilialSessao(Filial filial, String sessionID) {

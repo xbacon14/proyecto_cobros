@@ -1,10 +1,9 @@
-import 'dart:core';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proyecto_cobros/Animation/FadeAnimation.dart';
 
 import 'home_controller.dart';
 
@@ -26,79 +25,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       child: Scaffold(
         drawer: _drawer(),
         appBar: AppBar(
-          title: Text(widget.title),
+          leading: null,
           centerTitle: true,
         ),
         body: Column(
-          children: <Widget>[],
-        ),
-      ),
-    );
-  }
-
-  Widget _drawer() {
-    return Container(
-      // color: Colors.white,
-      height: Get.height * 0.4,
-      child: Drawer(
-        child: SafeArea(
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FadeAnimation(
-                  0.5,
-                  ListTile(
-                    leading: Icon(
-                      Icons.monetization_on,
-                      color: Color(0xFFD2691E),
-                    ),
-                    title: Text(
-                      'Trazabilidad de Cobro',
-                      style: GoogleFonts.montserrat(fontSize: 16),
-                    ),
-                    onTap: () {
-                      Get.toNamed('/home/lista_conta');
-                    },
-                  ),
-                ),
-                FadeAnimation(
-                  0.5,
-                  ListTile(
-                    leading: Icon(
-                      Icons.monetization_on,
-                      color: Color(0xFFD2691E),
-                    ),
-                    title: Text(
-                      'Efectuar Cobros',
-                      style: GoogleFonts.lato(fontSize: 16),
-                    ),
-                    onTap: () {
-                      Get.toNamed('/home/cobros');
-                    },
-                  ),
-                ),
-                FadeAnimation(
-                  1.0,
-                  ListTile(
-                    leading: Icon(
-                      Icons.exit_to_app,
-                      color: Color(0xFFD2691E),
-                    ),
-                    title: Container(
-                      child: Text(
-                        'Salir',
-                        style: GoogleFonts.montserrat(fontSize: 16),
-                      ),
-                    ),
-                    onTap: () {
-                      Get.offAndToNamed('/');
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
+          children: <Widget>[Container()],
         ),
       ),
     );
@@ -106,12 +37,65 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
   _onBackPressed() {
     return Get.defaultDialog(
-          middleText: 'Estas seguro que desea cerrar la secion?',
+          middleText: 'Estas segura que desseas cerrar la session?',
           onCancel: () {},
-          buttonColor: Color(0xFFD2691E),
           confirmTextColor: Colors.white,
           onConfirm: () => exit(0),
         ) ??
         false;
+  }
+
+  Widget _drawer() {
+    return Drawer(
+      child: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Card(
+              child: ListTile(
+                trailing: Icon(
+                  Icons.linear_scale,
+                  color: Color.fromRGBO(57, 151, 114, 1),
+                ),
+                title: Text('Trazabilidad de cobro',
+                    style: GoogleFonts.lato()
+                        .copyWith(color: Color.fromRGBO(57, 151, 114, 1))),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Get.toNamed('/home/listaConta');
+                },
+              ),
+            ),
+            Card(
+              child: ListTile(
+                trailing: Icon(
+                  Icons.monetization_on,
+                  color: Color.fromRGBO(57, 151, 114, 1),
+                ),
+                title: Text('Cobros',
+                    style: GoogleFonts.lato()
+                        .copyWith(color: Color.fromRGBO(57, 151, 114, 1))),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Get.toNamed('/home/cobro');
+                },
+              ),
+            ),
+            Expanded(child: Container()),
+            Card(
+              elevation: 0,
+              child: ListTile(
+                  trailing: Icon(
+                    Icons.exit_to_app,
+                    color: Color.fromRGBO(57, 151, 114, 1),
+                  ),
+                  title: Text('Cerrar Sesión',
+                      style: GoogleFonts.lato()
+                          .copyWith(color: Color.fromRGBO(57, 151, 114, 1))),
+                  onTap: () => Get.offAllNamed('/')),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

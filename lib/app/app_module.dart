@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:proyecto_cobros/app/app_widget.dart';
 import 'package:proyecto_cobros/app/modules/login/login_module.dart';
 
 import 'app_controller.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter/material.dart';
+import 'package:proyecto_cobros/app/app_widget.dart';
+
+import 'modules/home/home_module.dart';
 
 class AppModule extends MainModule {
   @override
@@ -12,9 +14,9 @@ class AppModule extends MainModule {
       ];
 
   @override
-  List<Router> get routers => [
-        Router(Modular.initialRoute, module: LoginModule()),
-        // Router(Modular.initialRoute, child: (_, args) => TimeLinePage()),
+  List<ModularRouter> get routers => [
+        ModularRouter(Modular.initialRoute, module: LoginModule()),
+        ModularRouter('/home', module: HomeModule()),
       ];
 
   @override

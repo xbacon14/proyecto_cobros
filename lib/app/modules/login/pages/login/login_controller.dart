@@ -20,16 +20,16 @@ abstract class _LoginControllerBase with Store {
   bool procesando = false;
 
   @action
-  Future<Usuario> autenticar(String login, String senha) {
-    procesando = true;
+  Future<Usuario> autenticar(String login, String senha) async {
     if (IPServidor.url == null || IPServidor.url.isEmpty) {
-      Get.toNamed('/config');
-      procesando = false;
+      Get.toNamed('/configuracao');
       return null;
     }
+    procesando = true;
     return repository.autenticar(login, senha).then((value) async {
       if (value.codigo == -404) {
-        Alert.smallShow('El usuario o la contraseña es invalido', Alert.ERROR);
+        Alert.show(
+            'Atención', 'El usuario o la contraseña es invalido', Alert.ERROR);
       } else {
         if (value.usuarioFilialList.length == 1) {
           await salvarFilialSessao(
@@ -39,7 +39,7 @@ abstract class _LoginControllerBase with Store {
             return null;
           });
         } else {
-          Alert.smallShow('Hay mas de una flial el usuario', Alert.WARNING);
+          Alert.show('Aviso', 'Hay mas de una flial el usuario', Alert.WARNING);
           procesando = false;
         }
       }
@@ -52,11 +52,5 @@ abstract class _LoginControllerBase with Store {
   @action
   Future salvarFilialSessao(Filial filial, String sessionID) {
     return repository.salvarFilialSessao(filial, sessionID).then((value) {});
-  }
-
-  Future<String> getIp() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String oldIP = prefs.getString("url_server");
-    return oldIP;
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 class AppWidget extends StatelessWidget {
@@ -11,22 +12,19 @@ class AppWidget extends StatelessWidget {
         child: GetMaterialApp(
       navigatorKey: Modular.navigatorKey,
       debugShowCheckedModeBanner: false,
-      title: 'App Cobros',
+      title: 'Cobros',
       theme: ThemeData(
-        accentColor: Color(0xFFD2691E),
         appBarTheme: AppBarTheme(
-          elevation: 5,
-          color: Color(0xFFD2691E),
+            elevation: 5,
+            color: Color.fromRGBO(253, 81, 28, 1),
+            iconTheme: IconThemeData(color: Colors.white)),
+        textTheme: TextTheme(
+          bodyText1: GoogleFonts.montserrat(),
+          bodyText2: GoogleFonts.montserrat(),
         ),
-
-        //altera a cor do datePicker
-        colorScheme: ColorScheme.light(
-          primary: Color(0xFFD2691E),
-          onPrimary: Colors.white,
-          surface: Color(0xFFD2691E),
-          onSurface: Color(0xFFD2691E),
-          secondary: Color(0xFFD2691E),
-        ),
+        primaryColor: Color.fromRGBO(57, 151, 114, 1),
+        accentColor: Color.fromRGBO(57, 151, 114, 1),
+        backgroundColor: Color.fromRGBO(57, 151, 114, 1),
       ),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,

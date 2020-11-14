@@ -1,8 +1,8 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
-import 'package:proyecto_cobros/app/components/alert/alert.dart';
 import 'package:proyecto_cobros/app/components/api/ip_servidor.dart';
 
+import '../alert/alert.dart';
 import 'dio_connectivity_request_retrier.dart';
 import 'hostname.dart';
 import 'retry_interceptor.dart';
@@ -21,7 +21,7 @@ class Api {
   }
 
   Api() {
-    // print(IPServidor.url);
+    print(IPServidor.url);
     BaseOptions _options = new BaseOptions(
       baseUrl: IPServidor.url,
       connectTimeout: 30000,
@@ -40,6 +40,7 @@ class Api {
       ),
     );
   }
+
   _onRequest(RequestOptions options) async {}
 
   _onResponse(Response e) {

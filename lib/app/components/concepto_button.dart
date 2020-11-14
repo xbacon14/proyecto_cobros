@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'utils/themeUtils.dart';
+import 'package:proyecto_cobros/app/utils/themeUtils.dart';
 
 class ConceptoButton extends RawMaterialButton {
   ConceptoButton(

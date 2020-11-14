@@ -1,14 +1,20 @@
+// import 'package:configure_app/app/components/alert/alert.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:proyecto_cobros/Animation/FadeAnimation.dart';
 import 'package:proyecto_cobros/app/components/alert/alert.dart';
+import 'package:proyecto_cobros/app/components/api/api.dart';
 import 'package:proyecto_cobros/app/components/api/ip_servidor.dart';
-import 'package:proyecto_cobros/app/components/controle.button.dart';
-import 'package:proyecto_cobros/app/components/inputs/text_inputs/text_form_input.dart';
-import 'package:proyecto_cobros/app/modules/login/pages/login/login_controller.dart';
+import 'package:proyecto_cobros/app/components/button/round_button.dart';
+import 'package:proyecto_cobros/app/components/concepto_button.dart';
+import 'package:proyecto_cobros/app/components/concepto_text_form_field.dart';
+import 'package:proyecto_cobros/app/components/inputs/text_input/text_input.dart';
+import 'package:proyecto_cobros/app/utils/size_utils.dart';
+import 'package:proyecto_cobros/app/utils/themeUtils.dart';
+import 'login_controller.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -20,151 +26,183 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   LoginController loginController = Modular.get();
+
   TextEditingController _usuarioController = TextEditingController();
   TextEditingController _senhaController = TextEditingController();
+
   @override
   void initState() {
-    _usuarioController.text = 'r';
+    _usuarioController.text = 'R';
     _senhaController.text = '2222015';
+
     IPServidor.init();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: <Widget>[
-            SingleChildScrollView(
-              child: Column(
+    SizeUtils.init(context);
+    ThemeUtils.init(context);
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Stack(
+            children: [
+              Column(
                 children: <Widget>[
-                  SizedBox(
-                    height: 50,
-                  ),
-                  _makeHeader(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  _makeForm(),
-                  Positioned(
-                    bottom: Get.height - 525,
-                    left: 10,
-                    child: InkWell(
-                      onTap: () {
-                        Get.toNamed('/config');
-                      },
-                      child: Icon(
-                        Icons.settings,
-                        color: Color.fromRGBO(57, 151, 114, 1),
-                      ),
-                    ),
-                  ),
+                  _makeLogin(),
                 ],
               ),
-            ),
-            Observer(builder: (_) {
-              return Visibility(
-                visible: loginController.procesando,
-                child: Container(
-                  width: Get.width,
-                  height: Get.height,
-                  color: Colors.black.withOpacity(0.5),
-                  child: Center(
-                    child: CircularProgressIndicator(),
+              Observer(builder: (_) {
+                return Visibility(
+                  visible: loginController.procesando,
+                  child: Container(
+                    width: Get.width,
+                    height: Get.height,
+                    color: Colors.white,
+                    child: Center(
+                        child: CircularProgressIndicator(
+                      backgroundColor: Color.fromRGBO(57, 151, 114, 1),
+                    )),
+                  ),
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _makeLogin() {
+    return Column(
+      children: [
+        Container(
+          color: Colors.grey.withOpacity(.03),
+          width: Get.width,
+          height: 150,
+          child: Stack(
+            fit: StackFit.loose,
+            children: [
+              Container(
+                width: 150,
+                height: 150,
+                decoration: BoxDecoration(
+                  // color: Colors.black,
+                  image: DecorationImage(
+                    image: AssetImage("assets/flex.png"),
+                    fit: BoxFit.cover,
                   ),
                 ),
-              );
-            })
-          ],
+              ),
+              Positioned(
+                top: 50,
+                left: 170,
+                child: Text(
+                  "Gestión de Cobros",
+                  style: TextStyle(
+                    color: Color.fromRGBO(57, 151, 114, 1),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 80,
+                left: 170,
+                child: Text(
+                  "App integrado de cobros y trazabilidad",
+                  style: TextStyle(
+                    color: Color.fromRGBO(57, 151, 114, 1),
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
-  }
-
-  Widget _makeHeader() {
-    return Container(
-      width: Get.width * .7,
-      child: FadeAnimation(
-        1.8,
-        Image.asset(
-          'assets/flex.png',
-          fit: BoxFit.fill,
-        ),
-      ),
-    );
-  }
-
-  Form _makeForm() {
-    return Form(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: <Widget>[
-            FadeAnimation(
-              1.3,
-              TextFormInput(
+        Container(
+          color: Colors.grey.withOpacity(.03),
+          height: Get.height - SizeUtils.statusBarheight,
+          width: SizeUtils.widthScreen,
+          padding: EdgeInsets.only(top: 50),
+          child: Column(
+            children: [
+              TextInput(
                 controller: _usuarioController,
-                icon: Icon(
-                  Icons.account_circle,
-                  color: Color.fromRGBO(253, 81, 28, 1),
-                ),
-                label: 'Login',
+                label: 'Usuario',
+                icon: Icon(Icons.supervised_user_circle,
+                    color: Color.fromRGBO(57, 151, 114, 1)),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            FadeAnimation(
-              1.4,
-              TextFormInput(
-                obscureText: true,
+              SizedBox(
+                height: 10,
+              ),
+              TextInput(
                 controller: _senhaController,
-                icon: Icon(
-                  Icons.lock,
-                  color: Color.fromRGBO(253, 81, 28, 1),
-                ),
+                isPassword: true,
                 label: 'Contraseña',
+                icon: Icon(
+                  Icons.https,
+                  color: Color.fromRGBO(57, 151, 114, 1),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            FadeAnimation(
-              1.8,
-              ControleButton(
-                primaryColor: Color(0xFFD2691E),
-                onPressed: () {
-                  _autenticar();
-                },
-                label: 'Entrar',
+              SizedBox(
+                height: 20,
               ),
-            ),
-            SizedBox(
-              height: Get.height * .1,
-            ),
-            Text(
-              "Desarrollado por FlexTech",
-              style: GoogleFonts.mitr()
-                  .copyWith(color: Colors.grey, fontStyle: FontStyle.italic),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-          ],
+              Expanded(
+                child: Stack(
+                  children: [
+                    Positioned(
+                      right: 10,
+                      child: (RaisedButton(
+                        child: Row(
+                          children: [
+                            Text("Entrar",
+                                style: TextStyle(color: Colors.white)),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.launch,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                        color: Color.fromRGBO(57, 151, 114, 1),
+                        onPressed: () => _autenticar(),
+                      )),
+                    ),
+                    Positioned(
+                      bottom: Get.height - 525,
+                      left: 10,
+                      child: InkWell(
+                        onTap: () {
+                          Get.toNamed('/configuracao');
+                        },
+                        child: Icon(
+                          Icons.settings,
+                          color: Color.fromRGBO(57, 151, 114, 1),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
-      ),
+      ],
     );
   }
 
   void _autenticar() {
     if (_usuarioController.text.isEmpty) {
-      Alert.show('Aviso', 'El usuario es requerido', Alert.WARNING);
+      Alert.show('Aviso', 'Debe informar el usuario', Alert.WARNING);
       return;
     }
     if (_senhaController.text.isEmpty) {
-      Alert.show('Aviso', 'La contraseña es requerida', Alert.WARNING);
+      Alert.show('Aviso', 'Debe informar la contraseña', Alert.WARNING);
       return;
     }
     loginController.autenticar(_usuarioController.text, _senhaController.text);
