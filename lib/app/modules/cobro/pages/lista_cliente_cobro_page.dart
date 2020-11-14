@@ -53,7 +53,6 @@ class _ListaClienteCobroPageState
         iconTheme: IconThemeData(color: letrasColor),
         backgroundColor: Colors.white,
       ),
-      // ),
       body: Stack(children: [
         Container(
           width: Get.width,
@@ -67,7 +66,8 @@ class _ListaClienteCobroPageState
               itemBuilder: (_, int index) {
                 // return Text(controller.dataProvider[index].nome);
                 return CardClienteRender(
-                    slidable: true, cliente: controller.dataProvider[index]);
+                    slidable: true,
+                    cliente: controller.dataProviderCliente[index]);
               },
             );
           }),

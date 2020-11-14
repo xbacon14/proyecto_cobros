@@ -66,8 +66,8 @@ class _CobroPageState extends ModularState<CobroPage, CobroController> {
               itemCount: controller.dataProvider.length,
               itemBuilder: (_, int index) {
                 return CobroRender(
-                  cliente: controller.dataProvider[index],
-                );
+                    // cliente: controller.dataProvider[index],
+                    );
               },
             );
           }),

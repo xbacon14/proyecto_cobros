@@ -19,7 +19,7 @@ class CobroModule extends ChildModule {
             child: (_, args) => ListaClienteCobroPage()),
         Router('/listaContaReceber',
             child: (_, args) => ListaContaReceberPage()),
-        Router('/efetuarCobro', child: (_, args) => CobroRender()),
+        // Router('/efetuarCobro', child: (_, args) => CobroRender()),
       ];
 
   static Inject get to => Inject<CobroModule>.of();

@@ -1,6 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:proyecto_cobros/app/components/alert/alert.dart';
 import 'package:proyecto_cobros/app/modules/cobro/models/cliente.dart';
+import 'package:proyecto_cobros/app/modules/cobro/models/importacao_exportacao_app_cobrancas.dart';
 import 'package:proyecto_cobros/app/modules/cobro/repositories/cobro_repository.dart';
 
 part 'cobro_controller.g.dart';
@@ -14,15 +15,33 @@ abstract class _CobroControllerBase with Store {
   bool procesando = false;
 
   @observable
-  List<Cliente> dataProvider = List();
+  ObservableList<ImportacaoExportacaoAppCobrancas> dataProvider =
+      ObservableList();
+
+  @observable
+  List<Cliente> dataProviderCliente = List();
 
   _CobroControllerBase(this.repository);
+
+  @action
+  Future<List<ImportacaoExportacaoAppCobrancas>> findByParcelasByCliente(
+      idCliente) {
+    procesando = true;
+    return repository.findParcelasByCliente(idCliente).then((value) {
+      dataProvider = value.asObservable();
+      return;
+    }).catchError((onError) {
+      Alert.smallShow('Error al consultar', Alert.ERROR);
+    }).whenComplete(() {
+      procesando = false;
+    });
+  }
 
   @action
   Future<List<Cliente>> findByCondition(String condition) {
     procesando = true;
     return repository.findByCondition(condition).then((value) {
-      dataProvider = value;
+      dataProviderCliente = value;
       return;
     }).catchError((onError) {
       print(onError);

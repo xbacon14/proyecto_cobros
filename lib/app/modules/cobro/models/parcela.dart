@@ -2,6 +2,7 @@ import 'package:proyecto_cobros/app/modules/cobro/models/recebimento.dart';
 
 import 'conta_receber.dart';
 import 'moeda.dart';
+import 'recebimento.dart';
 
 class Parcela {
   int id;

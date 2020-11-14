@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:proyecto_cobros/app/modules/cobro/models/importacao_exportacao_app_cobrancas.dart';
 
 class ContaRender extends StatelessWidget {
+  final ImportacaoExportacaoAppCobrancas appCobrancas;
+
+  const ContaRender({
+    Key key,
+    this.appCobrancas,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,10 +37,10 @@ class ContaRender extends StatelessWidget {
                     style: GoogleFonts.sansita()
                         .copyWith(fontSize: 24, color: Colors.black),
                   ),
-                  Text('1583',
+                  Text('${appCobrancas.idParcela}',
                       style: GoogleFonts.sansita()
                           .copyWith(fontSize: 16, color: Colors.black)),
-                  Text('Guaranies',
+                  Text('${appCobrancas.moeda}',
                       style: GoogleFonts.sansita()
                           .copyWith(fontSize: 22, color: Colors.black)),
                   Container(
@@ -55,11 +61,11 @@ class ContaRender extends StatelessWidget {
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('12/11/2020',
+                          Text('${appCobrancas.dtVencimento}',
                               style: GoogleFonts.sansita()
                                   .copyWith(fontSize: 16, color: Colors.green)),
-                          Text('82.500'),
-                          Text('25.000'),
+                          Text('${appCobrancas.vlDesconto}'),
+                          Text('${appCobrancas.vlJuros}'),
                         ]),
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

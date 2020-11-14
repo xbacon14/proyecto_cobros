@@ -27,20 +27,48 @@ mixin _$CobroController on _CobroControllerBase, Store {
   final _$dataProviderAtom = Atom(name: '_CobroControllerBase.dataProvider');
 
   @override
-  List<Cliente> get dataProvider {
+  ObservableList<ImportacaoExportacaoAppCobrancas> get dataProvider {
     _$dataProviderAtom.reportRead();
     return super.dataProvider;
   }
 
   @override
-  set dataProvider(List<Cliente> value) {
+  set dataProvider(ObservableList<ImportacaoExportacaoAppCobrancas> value) {
     _$dataProviderAtom.reportWrite(value, super.dataProvider, () {
       super.dataProvider = value;
     });
   }
 
+  final _$dataProviderClienteAtom =
+      Atom(name: '_CobroControllerBase.dataProviderCliente');
+
+  @override
+  List<Cliente> get dataProviderCliente {
+    _$dataProviderClienteAtom.reportRead();
+    return super.dataProviderCliente;
+  }
+
+  @override
+  set dataProviderCliente(List<Cliente> value) {
+    _$dataProviderClienteAtom.reportWrite(value, super.dataProviderCliente, () {
+      super.dataProviderCliente = value;
+    });
+  }
+
   final _$_CobroControllerBaseActionController =
       ActionController(name: '_CobroControllerBase');
+
+  @override
+  Future<List<ImportacaoExportacaoAppCobrancas>> findByParcelasByCliente(
+      dynamic idCliente) {
+    final _$actionInfo = _$_CobroControllerBaseActionController.startAction(
+        name: '_CobroControllerBase.findByParcelasByCliente');
+    try {
+      return super.findByParcelasByCliente(idCliente);
+    } finally {
+      _$_CobroControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   Future<List<Cliente>> findByCondition(String condition) {
@@ -57,7 +85,8 @@ mixin _$CobroController on _CobroControllerBase, Store {
   String toString() {
     return '''
 procesando: ${procesando},
-dataProvider: ${dataProvider}
+dataProvider: ${dataProvider},
+dataProviderCliente: ${dataProviderCliente}
     ''';
   }
 }
