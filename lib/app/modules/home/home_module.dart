@@ -1,4 +1,5 @@
 import 'package:proyecto_cobros/app/modules/cobro/cobro_module.dart';
+import 'package:proyecto_cobros/app/modules/config/controllers/printer/printer_controller.dart';
 import 'package:proyecto_cobros/app/modules/solicitacao_cobro/pages/historico/historico_controller.dart';
 import 'package:proyecto_cobros/app/modules/solicitacao_cobro/pages/historico/historico_page.dart';
 import 'package:proyecto_cobros/app/modules/solicitacao_cobro/repository/solicitacao_cobro_repository.dart';
@@ -14,6 +15,7 @@ class HomeModule extends ChildModule {
         Bind((i) => HomeController()),
         Bind((i) => HistoricoController(i.get())),
         Bind((i) => SolicitacaoCobroRepository()),
+        Bind((i) => PrinterController()),
       ];
 
   @override

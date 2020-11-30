@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:proyecto_cobros/app/modules/config/controllers/printer/teste_tela.dart';
 
 import 'home_controller.dart';
 
@@ -29,7 +30,13 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           centerTitle: true,
         ),
         body: Column(
-          children: <Widget>[Container()],
+          children: <Widget>[
+            MaterialButton(
+              child: Text('Teste Printer'),
+              color: Colors.orange,
+              onPressed: () => Get.to(TesteTela()),
+            )
+          ],
         ),
       ),
     );

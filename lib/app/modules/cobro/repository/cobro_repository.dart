@@ -16,4 +16,14 @@ class CobroRepositroy {
       return parcelas;
     });
   }
+
+  Future processaParcelas(ImportacaoExportacaoAppCobrancas appCobrancas) {
+    return Api()
+        .instance
+        .post(
+          '/contaReceberWS/processaParcelas',
+          data: appCobrancas.toJson(),
+        )
+        .then((value) {});
+  }
 }

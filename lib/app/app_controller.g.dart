@@ -24,6 +24,21 @@ mixin _$AppController on _AppControllerBase, Store {
     });
   }
 
+  final _$themeTypeAtom = Atom(name: '_AppControllerBase.themeType');
+
+  @override
+  ThemeData get themeType {
+    _$themeTypeAtom.reportRead();
+    return super.themeType;
+  }
+
+  @override
+  set themeType(ThemeData value) {
+    _$themeTypeAtom.reportWrite(value, super.themeType, () {
+      super.themeType = value;
+    });
+  }
+
   final _$_AppControllerBaseActionController =
       ActionController(name: '_AppControllerBase');
 
@@ -39,9 +54,21 @@ mixin _$AppController on _AppControllerBase, Store {
   }
 
   @override
+  void changeTheme() {
+    final _$actionInfo = _$_AppControllerBaseActionController.startAction(
+        name: '_AppControllerBase.changeTheme');
+    try {
+      return super.changeTheme();
+    } finally {
+      _$_AppControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-value: ${value}
+value: ${value},
+themeType: ${themeType}
     ''';
   }
 }

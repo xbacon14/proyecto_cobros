@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:proyecto_cobros/app/modules/cliente/cliente_controller.dart';
-import 'package:proyecto_cobros/app/modules/cliente/models/cliente.dart';
-import 'package:proyecto_cobros/app/modules/cliente/widget/cliente_render/card_cliente_render.dart';
+import 'package:proyecto_cobros/app/modules/cobro/models/importacao_exportacao_app_cobrancas.dart';
 import 'package:proyecto_cobros/app/modules/cobro/pages/cobro/cobro_controller.dart';
-import 'package:proyecto_cobros/app/modules/cobro/pages/lista_conta_receber/lista_parcelas_page.dart';
+import 'package:proyecto_cobros/app/modules/cobro/pages/cobro/cobro_page.dart';
+import 'package:proyecto_cobros/app/modules/cobro/pages/cobro/widgets/card_parcelas_cobros_render.dart';
 
-class ClienteRender extends StatelessWidget {
-  final Cliente cliente;
-  final ClienteController clienteController;
+class ParcelaRender extends StatelessWidget {
+  final ImportacaoExportacaoAppCobrancas appCobrancas;
   final CobroController cobroController;
 
-  const ClienteRender(
-      {Key key, this.cliente, this.clienteController, this.cobroController})
+  const ParcelaRender({Key key, this.appCobrancas, this.cobroController})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.25,
-      child: Hero(tag: cliente.id, child: CardClienteRender(cliente: cliente)),
+      child: Hero(
+          tag: appCobrancas.idParcela,
+          child: CardParcelasCobrosRender(appCobrancas: appCobrancas)),
       secondaryActions: <Widget>[
         IconSlideAction(
           caption: 'Cobrar',
@@ -29,7 +28,7 @@ class ClienteRender extends StatelessWidget {
           foregroundColor: Colors.white,
           onTap: () {
             FocusScope.of(context).unfocus();
-            Get.to(ListaContaReceberPage(cliente: cliente));
+            Get.to(CobroPage(appCobrancas: appCobrancas));
           },
         )
       ],

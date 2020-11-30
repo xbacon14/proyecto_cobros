@@ -4,14 +4,14 @@ import 'package:proyecto_cobros/app/modules/cliente/cliente_repository.dart';
 import 'package:proyecto_cobros/app/modules/cobro/pages/cobro/cobro_controller.dart';
 import 'package:proyecto_cobros/app/modules/cobro/pages/cobro/cobro_page.dart';
 import 'package:proyecto_cobros/app/modules/cobro/pages/lista_cliente_cobro/lista_cliente_cobro_page.dart';
+import 'package:proyecto_cobros/app/modules/cobro/pages/lista_conta_receber/lista_parcelas_page.dart';
 import 'package:proyecto_cobros/app/modules/cobro/repository/cobro_repository.dart';
-
-import 'pages/lista_conta_receber/lista_parcelas_page.dart';
+import 'package:proyecto_cobros/app/modules/config/controllers/printer/printer_controller.dart';
 
 class CobroModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => CobroController(i.get())),
+        Bind((i) => CobroController(i.get(), i.get())),
         Bind((i) => ClienteController(i.get())),
         Bind((i) => ClienteRepository()),
         Bind((i) => CobroRepositroy()),

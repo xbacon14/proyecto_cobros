@@ -55,6 +55,18 @@ mixin _$CobroController on _CobroControllerBase, Store {
   }
 
   @override
+  Future<dynamic> processaParcelas(
+      ImportacaoExportacaoAppCobrancas appCobrancas) {
+    final _$actionInfo = _$_CobroControllerBaseActionController.startAction(
+        name: '_CobroControllerBase.processaParcelas');
+    try {
+      return super.processaParcelas(appCobrancas);
+    } finally {
+      _$_CobroControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 processando: ${processando},

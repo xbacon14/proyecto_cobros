@@ -16,7 +16,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
             elevation: 5,
-            color: Color.fromRGBO(253, 81, 28, 1),
+            color: Color.fromRGBO(57, 151, 114, 1),
             iconTheme: IconThemeData(color: Colors.white)),
         textTheme: TextTheme(
           bodyText1: GoogleFonts.montserrat(),

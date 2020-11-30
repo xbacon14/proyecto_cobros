@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proyecto_cobros/app/components/api/api.dart';
 import 'package:proyecto_cobros/app/components/api/ip_servidor.dart';
 import 'package:proyecto_cobros/app/components/concepto_button.dart';
 import 'package:proyecto_cobros/app/components/inputs/text_input/text_input.dart';

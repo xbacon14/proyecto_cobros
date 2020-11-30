@@ -24,7 +24,7 @@ class ControleButton extends RawMaterialButton {
             ),
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(8),
           ),
           fillColor: primaryColor ?? ThemeUtils.primaryColor,
           highlightColor: highlightColor ?? ThemeUtils.primaryColor,

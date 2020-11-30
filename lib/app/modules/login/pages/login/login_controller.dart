@@ -34,7 +34,11 @@ abstract class _LoginControllerBase with Store {
         if (value.usuarioFilialList.length == 1) {
           await salvarFilialSessao(
                   value.usuarioFilialList[0].filial, value.sessionID)
-              .then((value) {
+              .then((value) async {
+            final SharedPreferences preferences =
+                await SharedPreferences.getInstance();
+            String usuario = '$login';
+            preferences.setString('usuario', usuario);
             Get.offNamed('/home');
             return null;
           });

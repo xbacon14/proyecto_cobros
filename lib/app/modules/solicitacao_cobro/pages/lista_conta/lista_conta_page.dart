@@ -28,6 +28,7 @@ class _ListaContaPageState extends State<ListaContaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: BackButton(color: Color.fromRGBO(57, 151, 114, 1)),
         title: Container(
@@ -91,8 +92,8 @@ class _ListaContaPageState extends State<ListaContaPage> {
 
   _search() {
     if (searchController.value.text.length < 3) {
-      Alert.show('Aviso', 'Es necesario ingresar al menos 3 carácteres',
-          Alert.WARNING);
+      Alert.smallShow(
+          'Es necesario ingresar al menos 3 carácteres', Alert.WARNING);
       return;
     }
     FocusScope.of(context).unfocus();

@@ -5,16 +5,12 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_cobros/app/components/alert/alert.dart';
-import 'package:proyecto_cobros/app/components/api/api.dart';
 import 'package:proyecto_cobros/app/components/api/ip_servidor.dart';
-import 'package:proyecto_cobros/app/components/button/round_button.dart';
-import 'package:proyecto_cobros/app/components/concepto_button.dart';
-import 'package:proyecto_cobros/app/components/concepto_text_form_field.dart';
 import 'package:proyecto_cobros/app/components/inputs/text_input/text_input.dart';
 import 'package:proyecto_cobros/app/utils/size_utils.dart';
 import 'package:proyecto_cobros/app/utils/themeUtils.dart';
+
 import 'login_controller.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -88,9 +84,9 @@ class _LoginPageState extends State<LoginPage> {
                 width: 150,
                 height: 150,
                 decoration: BoxDecoration(
-                  // color: Colors.black,
+                  color: Colors.black,
                   image: DecorationImage(
-                    image: AssetImage("assets/flex.png"),
+                    image: AssetImage("assets/flex_logo.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -198,11 +194,11 @@ class _LoginPageState extends State<LoginPage> {
 
   void _autenticar() {
     if (_usuarioController.text.isEmpty) {
-      Alert.show('Aviso', 'Debe informar el usuario', Alert.WARNING);
+      Alert.smallShow('Debe informar el usuario', Alert.WARNING);
       return;
     }
     if (_senhaController.text.isEmpty) {
-      Alert.show('Aviso', 'Debe informar la contraseña', Alert.WARNING);
+      Alert.smallShow('Debe informar la contraseña', Alert.WARNING);
       return;
     }
     loginController.autenticar(_usuarioController.text, _senhaController.text);

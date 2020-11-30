@@ -21,6 +21,7 @@ class _ListaClienteCobroPageState extends State<ListaClienteCobroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: BackButton(color: Color.fromRGBO(57, 151, 114, 1)),
         title: Container(
