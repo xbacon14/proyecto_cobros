@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: BoxDecoration(
                   color: Colors.black,
                   image: DecorationImage(
-                    image: AssetImage("assets/flex_logo.jpg"),
+                    image: AssetImage("assets/flex.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
