@@ -15,9 +15,9 @@ class CardClienteRender extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(left: 20, top: 5),
-              width: Get.width - 24,
-              height: 105,
+              padding: EdgeInsets.only(left: 20, top: 5, bottom: 5),
+              width: Get.width * 0.9,
+              height: 110,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -26,21 +26,21 @@ class CardClienteRender extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.clip,
                     style: GoogleFonts.acme()
-                        .copyWith(fontSize: 25, color: Colors.grey),
+                        .copyWith(fontSize: 25, color: Colors.black87),
                   ),
                   Row(
                     children: <Widget>[
                       Text(
-                        'Ruc: ',
+                        'RUC: ',
                         maxLines: 2,
                         style: GoogleFonts.lato()
                             .copyWith(fontSize: 14, color: Colors.grey),
                       ),
                       Text(
-                        cliente?.ruc ?? 'Ruc no registrado',
+                        cliente?.ruc ?? 'RUC no registrado',
                         maxLines: 2,
                         style: GoogleFonts.lato()
-                            .copyWith(fontSize: 14, color: Colors.grey),
+                            .copyWith(fontSize: 12, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -48,17 +48,20 @@ class CardClienteRender extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'Dirección: ',
-                        maxLines: 2,
                         style: GoogleFonts.lato()
                             .copyWith(fontSize: 14, color: Colors.grey),
                       ),
                       Text(
                         cliente?.endereco ?? 'Dirección no registrado',
                         maxLines: 2,
+                        overflow: TextOverflow.clip,
                         style: GoogleFonts.lato()
-                            .copyWith(fontSize: 14, color: Colors.grey),
+                            .copyWith(fontSize: 12, color: Colors.grey),
                       ),
                     ],
+                  ),
+                  Expanded(
+                    child: Container(),
                   ),
                   Row(
                     children: <Widget>[
@@ -70,7 +73,7 @@ class CardClienteRender extends StatelessWidget {
                       Text(
                         cliente.telefonoFormated(),
                         style: GoogleFonts.lato()
-                            .copyWith(fontSize: 14, color: Colors.grey),
+                            .copyWith(fontSize: 12, color: Colors.grey),
                       ),
                       Visibility(
                         visible: cliente.telefoneValido(),

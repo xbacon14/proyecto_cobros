@@ -20,7 +20,7 @@ class HeroContaReceber extends StatelessWidget {
                 padding: EdgeInsets.only(left: 20, top: 10, bottom: 5),
                 color: Colors.white,
                 width: Get.width * .63,
-                height: 105,
+                height: 120,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -112,7 +112,7 @@ class HeroContaReceber extends StatelessWidget {
                     Text(
                       '${conta.qtdParcelasPagas}/${conta.qtdParcelas}',
                       style: GoogleFonts.russoOne()
-                          .copyWith(fontSize: 55, color: Colors.white),
+                          .copyWith(fontSize: 48, color: Colors.white),
                     )
                   ],
                 ),

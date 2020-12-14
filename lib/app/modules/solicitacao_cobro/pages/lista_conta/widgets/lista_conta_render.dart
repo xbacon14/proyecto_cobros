@@ -32,10 +32,11 @@ class ListaContaRender extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.only(left: 20, top: 10, bottom: 5),
+                  padding:
+                      EdgeInsets.only(left: 20, top: 10, bottom: 5, right: 5),
                   color: Colors.white,
                   width: widthContainer * .65,
-                  height: 100,
+                  height: 120,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -83,8 +84,9 @@ class ListaContaRender extends StatelessWidget {
                         conta?.endereco ?? 'Dirección no registrado',
                         // "Calle San Miguel 912 c/ Av Paraguay",
                         maxLines: 2,
+                        overflow: TextOverflow.clip,
                         style: GoogleFonts.lato()
-                            .copyWith(fontSize: 12, color: Colors.grey),
+                            .copyWith(fontSize: 11, color: Colors.grey),
                       ),
                       Expanded(
                         child: Container(),
@@ -125,7 +127,7 @@ class ListaContaRender extends StatelessWidget {
                       Text(
                         '${conta.qtdParcelasPagas}/${conta.qtdParcelas}',
                         style: GoogleFonts.russoOne()
-                            .copyWith(fontSize: 55, color: Colors.white),
+                            .copyWith(fontSize: 48, color: Colors.white),
                       )
                     ],
                   ),
